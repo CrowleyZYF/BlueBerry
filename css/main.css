@@ -1,0 +1,175 @@
+body{width:100%;min-width: 1400px;background: url("../image/page_bg.png") repeat;margin: 0 auto;}
+h3{font-weight: bold;margin: 20px 0;}
+.myHr{width: 1200px;height: 2px;border-top: 2px solid #e7e7e7;}
+.table-bordered>thead>tr>th{border-bottom-width:1px;}
+.excellent{background-color: #70fda4 !important;}
+.great{background-color: #71d3e7 !important;}
+.good{background-color: #8891fd !important;}
+.bad{background-color: #c370e7 !important;}
+.suck{background-color: #fd6e7f !important;}
+.excellent2{color: #70fda4 !important;}
+.great2{color: #71d3e7 !important;}
+.good2{color: #8891fd !important;}
+.bad2{color: #c370e7 !important;}
+.suck2{color: #fd6e7f !important;}
+.print{width: 1200px;height: 30px;margin: 20px 0 0 10px;}
+.print h3{float: left;margin-top: 0;}
+.print>div{float: right;}
+.print img{width:24px;height: 24px;}
+#myTab{background-color: #d7e5cb;}
+#myTab li{margin-top: 3px;}
+#myTab a{color: #000000;}
+.nav-tabs>li.active>a{border: 1px solid #88b06b;border-bottom-color: transparent;border-top-width:3px;}
+.nav-tabs{border-bottom: 1px solid #88b06b;}
+.nav-tabs>li.active>a:hover{border: 1px solid #88b06b;border-bottom-color: transparent;border-top-width:3px;}
+
+/*map*/
+#map{width: 1200px;height: 700px;margin: 10px 0;}
+#mapInfo{margin: 10px 0;}
+#mapInfo *{border: none;font-size: 16px;}
+.mapHeader{font-weight: bolder;}
+
+/*growPeroid*/
+.growPeroidBasicInfo{height: 30px;list-style: none;}
+.growPeroidBasicInfo *{float: left;width: 200px;}
+.growPeroidBasicInfo select{width: 150px;}
+.growPeroidBasicInfoHeader{width: 100px !important;font-size: 16px;line-height: 30px;}
+#timelineInfo{height: 450px;}
+#timelineInfo>*{float: left;}
+#timeline{width: 900px;height: 400px;}
+#timelineInfomation{height: 300px;margin-left: 20px;margin-top:50px;border: 2px dashed #dddddd;padding: 10px;font-size: 14px;}
+#timelineInfomation ul{list-style: none;padding-left: 0;margin-left: 0;}
+#timelineInfomation ul li{padding-left: 0;margin-left: 0;}
+#timelineInfomation img{width: 200px;height: 100px;padding-top: 5px;}
+#growPeriodPieCharts{width: 1200px;height: 450px;}
+.growPeriodSomeData{float: left;width: 400px;height:400px;margin: 25px;border: 2px dashed #dddddd;}
+.growPeriodPieChart{width: 400px;height:400px;}
+.growPeriodShow{width: 36px;height: 24px;float: right;}
+.growPeriodPrint{width: 24px;height: 24px;float: right;margin-right: 25px;}
+.growPeriodControl{height: 50px;width: 1200px;}
+.growPeriodH4{float: left;font-weight: bold;font-size: 16px;}
+
+#guageSomeData{height: 500px;}
+.guageSomeData{float: left;width: 230px;}
+.dataImage{width: 80px;height: 80px;margin-left: 80px;}
+.gaugeP{text-align: center;}
+.gauge-container {text-align: center;margin: 0 auto;background: transparent url("../image/linear-gauge-container.png") no-repeat 50% 50%;padding: 18px;width: 200px;height: 336px;}
+.gauge {height: 300px;display: inline-block;zoom:1;}
+#scatterChart{height: 450px;}
+.scatterChart{float: left;width: 600px;height: 400px;}
+
+.fontSize{font-size: 16px;line-height: 30px;}
+#timeline1{width: 1200px;height: 400px;margin-top: 20px;}
+
+
+#nowSafetyGauge-container{height: 300px;}
+.nowSafetyGauge{float: left;width: 400px;height: 200px;}
+.nowSafetyGauge div{float: left;width: 400px;height: 200px;}
+.nowSafetyGauge p{margin: 10px 0 0 175px;font-weight: bold;}
+.otherInfoDiv{height: 200px;margin-left: 10px;}
+.otherInfo{width: 550px;height: 370px;margin-right: 50px; border: 2px dashed #dddddd;float: left;}
+h5{margin-left: 10px;font-weight: bold;}
+textarea{margin-left: 10px;width: 450px;height: 125px;resize: none;background-color: #f4f4f4;}
+#nowSafetyWarning{width: 48px;height: 48px;float: left;}
+.otherImg{padding-left: 50px;}
+
+#show:hover{cursor: pointer}
+/*
+body{width: 1300px;background: url("../image/page_bg.png") repeat;}
+.yahei{font-family: "微软雅黑";}
+a{color: #333333;}
+a:hover{cursor: pointer;text-decoration: none;color: #333333;}
+h3{margin-left: 10px;font-weight: bold;}
+.noborder{margin: 2px;}
+.noborder td{border: none !important;}
+.noborder td:nth-child(2n){padding-right: 50px;}
+.noborder td:nth-child(2n+1){font-weight: bolder;padding-right: 0;}
+.myHr{width: 1100px;height: 1px;border-top: 1px solid #e7e7e7;}
+.table-bordered>thead>tr>th{border-bottom: none;}
+.backLightBlue{background-color: #d9edf7 !important;}
+.fontLightBlue{color: #545af7;}
+.backLightGreen{background-color: #dff0d8;}
+.fontRed{color: #f2353f;}
+.backRed{background-color: #f18888;}
+.excellent{background-color: #70fda4 !important;}
+.great{background-color: #71d3e7 !important;}
+.good{background-color: #8891fd !important;}
+.bad{background-color: #c370e7 !important;}
+.suck{background-color: #fd6e7f !important;}
+.excellent2{color: #70fda4 !important;}
+.great2{color: #71d3e7 !important;}
+.good2{color: #8891fd !important;}
+.bad2{color: #c370e7 !important;}
+.suck2{color: #fd6e7f !important;}
+.print{width: 1000px;height: 30px;margin: 20px 0 0 10px;}
+.print h3{float: left;margin-top: 0;}
+.print>div{float: right;}
+.print img{width:24px;height: 24px;}
+
+#left{float: left;width: 40px;border-right: 1px solid #ddd;min-height: 1000px;}
+#leftNav{width: 199px;display: none;}
+#switch{width: 32px;}
+#switch img{width: 32px;height: 32px;position: fixed;top: 350px;margin-left: 0;}
+#logo{font-size: 20px;font-weight: bold;margin: 25px auto 25px auto;width: 126px;}
+.panel{border:none;}
+.panel-body{border-top: none !important;}
+.pointList{list-style: none;padding-left: 0;margin-bottom: 0;}
+.pointList li a{color: #555;}
+.pointList li a:hover{text-decoration: none;cursor: pointer;}
+
+#right{float: left;width: 1100px;}
+#mapInfo{margin: 2px;}
+#mapInfo td{border: none;}
+#mapInfo td:nth-child(2n){padding-right: 50px;}
+#mapInfo td:nth-child(2n+1){font-weight: bolder;padding-right: 0;}
+.content{margin-left: 5px;}
+
+#timeline{margin-left: 25px;margin-bottom: 50px;width: 800px;height: 400px;}
+#growPeriodPieCharts{width: 1100px;height: 450px;}
+.growPeriodSomeData{float: left;width: 400px;height:400px;margin: 25px;}
+.growPeriodPieChart{width: 400px;height:400px;}
+#growPeriod h4{font-weight: bold;margin-left: 10px;}
+#growPeriod table{margin-left: 10px;}
+.growPeriodShow{width: 36px;height: 24px;float: right;}
+.growPeriodPrint{width: 24px;height: 24px;float: right;margin-right: 25px;}
+.growPeriodControl{height: 50px;}
+.growPeriodH4{float: left;}
+
+#pieCharts{width: 800px;height: 450px;}
+.someData{float: left;width: 400px;}
+#right h4{margin-left: 10px;font-weight: bold;}
+:root *>.k-icon, :root *>.k-sprite, :root *>.k-button-group .k-tool-icon{vertical-align: middle !important;}
+.k-link{height: 19px !important;}
+#warning{width: 48px;height: 48px;float: left;}
+.guageSomeData{float: left;width: 200px;}
+.dataImage{width: 80px;height: 80px;margin-left: 65px;}
+.gaugeP{text-align: center;}
+.gauge-container {text-align: center;margin: 0 auto;background: transparent url("../image/linear-gauge-container.png") no-repeat 50% 50%;padding: 18px;width: 200px;height: 336px;}
+.gauge {height: 300px;display: inline-block;zoom:1;}
+.orange{color: #f39607;}
+.chart-wrapper{width: 1000px;}
+.scatterChart{width: 1000px;height: 400px;}
+.modal-dialog{margin: 300px auto;}
+
+
+#periodSafetyInfo{height: 30px;list-style: none;padding-left: 10px;}
+#periodSafetyInfo li{float: left;width: 80px;}
+#periodSafetyInfo li:nth-child(2n){margin-right: 20px;width: 60px;text-align: left;}
+#periodSafetyInfo li:nth-child(2n+1){font-weight: bold;}
+
+
+form{height: 50px;}
+.form-group{float: left;width: 400px;}
+.form-group label{padding-top: 4px !important;}
+#nowSafetyGauge-container{height: 300px;}
+.nowSafetyGauge{float: left;width: 400px;height: 200px;}
+.nowSafetyGauge div{float: left;width: 400px;height: 200px;}
+.nowSafetyGauge p{margin: 10px 0 0 175px;font-weight: bold;}
+.otherInfoDiv{height: 200px;margin-left: 10px;}
+.otherInfo{width: 500px;height: 370px;margin-right: 50px; border: 2px dashed #dddddd;float: left;}
+h5{margin-left: 10px;font-weight: bold;}
+textarea{margin-left: 10px;width: 450px;height: 125px;resize: none;background-color: #f4f4f4;}
+#nowSafetyWarning{width: 48px;height: 48px;float: left;}
+
+.otherImg{padding-left: 20px;}
+*/

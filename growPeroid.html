@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="css/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="css/kendo.common.min.css" rel="stylesheet" />
+    <link href="css/kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--[if lte IE 7]>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-ie6.min.css">
+    <link rel="stylesheet" type="text/css" href="css/ie.css">
+    <![endif]-->
+    <link href="css/tablecloth.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <!--[if lte IE 7]>
+    <script type="text/javascript" src="js/bootstrap-ie.js"></script>
+    <![endif]-->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/jquery.metadata.js"></script>
+    <script src="js/jquery.tablesorter.js"></script>
+    <script src="js/jquery.tablecloth.js"></script>
+    <script src="js/temWetChart.js"></script>
+    <script src="js/jsonTemp.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/growPeroid.js"></script>
+    <script src="js/href.js"></script>
+    <title>生长周期分析</title>
+    <script>
+        $(document).ready(function(){
+            $("#mapDivA").click(function(){
+                location.href=$(this).attr("href");
+            })
+        })
+    </script>
+</head>
+<body>
+    <div style="height: 100px;">
+        <img src="image/top_banner.jpg" style="height: 100px;width: 100%">
+    </div>
+    <ul id="myTab" class="nav nav-tabs content">
+        <li><a href="map.html" data-toggle="tab" class="hideNav" id="mapDivA">地图</a></li>
+        <li class="dropdown active">
+            <a href="#" id="growManagement" class="dropdown-toggle" data-toggle="dropdown">
+                生长管理
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="growManagement">
+                <li>
+                    <a href="growPeroid.html" class="showNav" id="growPeriodA">生长周期分析</a>
+                </li>
+                <li>
+                    <a href="data.html" class="showNav" id="dataManagementA">实时数据监控</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" id="safetyManagement" class="dropdown-toggle" data-toggle="dropdown">
+                安全管理
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="safetyManagement">
+                <li>
+                    <a href="safePeroid.html" class="showNav" id="periodSafetyA">周期安全管理</a>
+                </li>
+                <li>
+                    <a href="safeNow.html" class="showNav" id="nowSafetyA">当期安全分析</a>
+                </li>
+                <li>
+                    <a href="point.html" class="showNav" id="pointA">监控点信息</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="temp.html">蓝莓咨询</a></li>
+        <li><a href="http://222.85.150.217:8099/BlueBerry/logout.do">后台管理</a></li>
+    </ul>
+    <h3>基本情况</h3>
+    <ul class="growPeroidBasicInfo">
+        <li class="growPeroidBasicInfoHeader">批次：</li>
+        <li>
+            <select id="growPeriodBatchID" class="form-control input-sm">
+            </select>
+        </li>
+        <li class="growPeroidBasicInfoHeader">指标：</li>
+        <li>
+            <select id="growPeriodIndex" class="form-control input-sm">
+                <option id="1">温度</option>
+                <option id="2">湿度</option>
+            </select>
+        </li>
+    </ul>
+    <div id="timelineInfo">
+        <div id="timeline"></div>
+        <div id="timelineInfomation">
+            <ul>
+                <li>当前周期：抽枝期</li>
+                <li>当前日期：10 / 8</li>
+                <li>&nbsp;</li>
+                <li>查看周期：<span id="testPeriod">休眠期</span></li>
+                <li>周期跨度：<span id="testPeriodTime">01-03至01-31</span></li>
+                <li>查看数据：<span id="testCato">最低温度均值</span></li>
+                <li>数值：<span id="testTemp">2</span>℃</li>
+                <li>实地照片：</li>
+                <li>
+                    <a href="image/peroid1.JPG" id="blueBerryImg1">
+                        <img src="image/peroid1.JPG" id="blueBerryImg2" style="width: 200px;height: 100px">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div class="myHr"></div>
+    <h3>统计分析</h3>
+    <ul class="growPeroidBasicInfo">
+        <li class="growPeroidBasicInfoHeader">周期名称：</li>
+        <li>
+            <select class="form-control input-sm" id="period">
+            </select>
+        </li>
+        <li class="growPeroidBasicInfoHeader">展现指标：</li>
+        <li>
+            <select class="form-control input-sm" id="show2">
+                <option id="max">最大值</option>
+                <option id="average">平均值</option>
+                <option id="min">最小值</option>
+            </select>
+        </li>
+    </ul>
+    <div id="growPeriodPieCharts">
+        <div class="growPeriodSomeData">
+            <div id="growPeriodChart1" class="growPeriodPieChart"></div>
+        </div>
+        <div class="growPeriodSomeData">
+            <div id="growPeriodChart2" class="growPeriodPieChart"></div>
+        </div>
+    </div>
+    <div class="myHr"></div>
+    <h3>生长监控数据：</h3>
+    <div class="growPeriodControl">
+        <h4 class="growPeriodH4">休眠期：</h4>
+        <img class="growPeriodShow" src="image/eye.png" />
+        <img class="growPeriodPrint" src="image/print.png" onclick="printTable('growPeriod1')"/>
+    </div>
+    <div id="growPeriod1">
+        <table id="growPeriodTable1" class="table-hover">
+            <thead>
+            <tr>
+                <th>批次</th>
+                <th>种植品种</th>
+                <th>时间</th>
+                <th>最高温度</th>
+                <th>最低温度</th>
+                <th>平均温度</th>
+                <th>最高湿度</th>
+                <th>最低湿度</th>
+                <th>平均湿度</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="growPeriodControl">
+        <h4 class="growPeriodH4">开花期：</h4>
+        <img class="growPeriodShow" src="image/eye.png" />
+        <img class="growPeriodPrint" src="image/print.png" onclick="printTable('growPeriod2')" />
+    </div>
+    <div id="growPeriod2">
+        <table id="growPeriodTable2" class="table-hover">
+            <thead>
+            <tr>
+                <th>批次</th>
+                <th>种植品种</th>
+                <th>时间</th>
+                <th>最高温度</th>
+                <th>最低温度</th>
+                <th>平均温度</th>
+                <th>最高湿度</th>
+                <th>最低湿度</th>
+                <th>平均湿度</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="growPeriodControl">
+        <h4 class="growPeriodH4">抽枝期：</h4>
+        <img class="growPeriodShow" src="image/eye.png" />
+        <img class="growPeriodPrint" src="image/print.png" onclick="printTable('growPeriod3')" />
+    </div>
+    <div id="growPeriod3">
+        <table id="growPeriodTable3" class="table-hover">
+            <thead>
+            <tr>
+                <th>批次</th>
+                <th>种植品种</th>
+                <th>时间</th>
+                <th>最高温度</th>
+                <th>最低温度</th>
+                <th>平均温度</th>
+                <th>最高湿度</th>
+                <th>最低湿度</th>
+                <th>平均湿度</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="growPeriodControl">
+        <h4 class="growPeriodH4">完全开花期：</h4>
+        <img class="growPeriodShow" src="image/eye.png" />
+        <img class="growPeriodPrint" src="image/print.png" onclick="printTable('growPeriod4')" />
+    </div>
+    <div id="growPeriod4">
+        <table id="growPeriodTable4" class="table-hover">
+            <thead>
+            <tr>
+                <th>批次</th>
+                <th>种植品种</th>
+                <th>时间</th>
+                <th>最高温度</th>
+                <th>最低温度</th>
+                <th>平均温度</th>
+                <th>最高湿度</th>
+                <th>最低湿度</th>
+                <th>平均湿度</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="growPeriodControl">
+        <h4 class="growPeriodH4">成熟期：</h4>
+        <img class="growPeriodShow" src="image/eye.png" />
+        <img class="growPeriodPrint" src="image/print.png" onclick="printTable('growPeriod5')" />
+    </div>
+    <div id="growPeriod5">
+        <table id="growPeriodTable5" class="table-hover">
+            <thead>
+            <tr>
+                <th>批次</th>
+                <th>种植品种</th>
+                <th>时间</th>
+                <th>最高温度</th>
+                <th>最低温度</th>
+                <th>平均温度</th>
+                <th>最高湿度</th>
+                <th>最低湿度</th>
+                <th>平均湿度</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div style="height: 100px;background: url('image/bottom_banner.jpg') repeat;text-align: center;line-height: 100px;">
+        版权所有：贵州农经传媒资讯有限公司&nbsp;&nbsp;&nbsp;&nbsp;技术支持：树信智信息科技有限公司
+    </div>
+</body>
+</html>

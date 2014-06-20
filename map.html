@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/zTreeStyle.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.ztree.core-3.5.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jsonTemp.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/href.js"></script>
+    <title>蓝莓—地图</title>
+    <script>
+        $(document).ready(function(){
+            $("#mapDivA").click(function(){
+                location.href=$(this).attr("href");
+            })
+        })
+    </script>
+</head>
+<body>
+    <div style="height: 100px;">
+        <img src="image/top_banner.jpg" style="height: 100px;width: 100%">
+    </div>
+    <ul id="myTab" class="nav nav-tabs content">
+        <li class="active"><a href="map.html" data-toggle="tab" class="hideNav" id="mapDivA">地图</a></li>
+        <li class="dropdown">
+            <a href="#" id="growManagement" class="dropdown-toggle" data-toggle="dropdown">
+                生长管理
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="growManagement">
+                <li>
+                    <a href="growPeroid.html" class="showNav" id="growPeriodA">生长周期分析</a>
+                </li>
+                <li>
+                    <a href="data.html" class="showNav" id="dataManagementA">实时数据监控</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" id="safetyManagement" class="dropdown-toggle" data-toggle="dropdown">
+                安全管理
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="safetyManagement">
+                <li>
+                    <a href="safePeroid.html" class="showNav" id="periodSafetyA">周期安全管理</a>
+                </li>
+                <li>
+                    <a href="safeNow.html" class="showNav" id="nowSafetyA">当期安全分析</a>
+                </li>
+                <li>
+                    <a href="point.html" class="showNav" id="pointA">监控点信息</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="temp.html">蓝莓咨询</a></li>
+        <li><a href="http://222.85.150.217:8099/BlueBerry/logout.do">后台管理</a></li>
+    </ul>
+    <div style="float: left;width: 189px;border-right: 1px solid #dcdcdc;height: 800px" id="dataLeft">
+        <p style="margin-bottom: 0;text-align: right;padding-right: 10px;margin-top: 10px;"><span style="padding-right: 35px;font-weight: bold" id="showTitle">基地选择：</span><span id="show">隐藏列表</span></p>
+        <ul id="treeDemo" class="ztree"></ul>
+    </div>
+    <div style="float: left;width: 1200px;padding-left: 10px" id="dataRight">
+        <table class="table" id="mapInfo">
+            <tr>
+                <td class="mapHeader">基地名：</td>
+                <td id="baseName">暂无相关信息</td>
+                <td class="mapHeader">生产种植：</td>
+                <td id="baseProducts">暂无相关信息</td>
+                <td class="mapHeader">地理位置：</td>
+                <td id="baseLocation">暂无相关信息</td>
+                <td class="mapHeader">基地面积：</td>
+                <td><span id="baseArea">暂无相关信息</span></td>
+            </tr>
+            <tr>
+                <td class="mapHeader">主管公司：</td>
+                <td id="company">暂无相关信息</td>
+                <td class="mapHeader">监控点数：</td>
+                <td id="points">3</td>
+            </tr>
+        </table>
+        <div id="map"></div>
+    </div>
+    <div style="clear: both;float: none"></div>
+    <div style="height: 100px;background: url('image/bottom_banner.jpg') repeat;text-align: center;line-height: 100px;">
+        版权所有：贵州农经传媒资讯有限公司&nbsp;&nbsp;&nbsp;&nbsp;技术支持：树信智信息科技有限公司
+    </div>
+    <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="css/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="css/kendo.common.min.css" rel="stylesheet" />
+    <link href="css/kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/tablecloth.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/jquery.metadata.js"></script>
+    <script src="js/jquery.tablesorter.js"></script>
+    <script src="js/jquery.tablecloth.js"></script>
+    <script src="js/temWetChart.js"></script>
+    <script src="js/jsonTemp.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/safePeroid.js"></script>
+    <script src="js/href.js"></script>
+    <title>安全管理周期</title>
+    <style>
+        .firstTr{
+            width: 195px;
+        }
+        .secondTr{
+            width: 150px;
+        }
+        .thirdTr{
+            width: 119px;
+        }
+        .fourthTr{
+            width: 119px;
+        }
+        .fifthTr{
+            width: 196px;
+        }
+        .sixthTr{
+            width: 231px;
+        }
+        h4{
+            margin-left: 10px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $("#mapDivA").click(function(){
+                location.href=$(this).attr("href");
+            })
+        })
+    </script>
+</head>
+<body>
+    <div style="height: 100px;">
+        <img src="image/top_banner.jpg" style="height: 100px;width: 100%">
+    </div>
+    <ul id="myTab" class="nav nav-tabs content">
+        <li><a href="map.html" data-toggle="tab" class="hideNav" id="mapDivA">地图</a></li>
+        <li class="dropdown">
+            <a href="#" id="growManagement" class="dropdown-toggle" data-toggle="dropdown">
+                生长管理
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="growManagement">
+                <li>
+                    <a href="growPeroid.html" class="showNav" id="growPeriodA">生长周期分析</a>
+                </li>
+                <li>
+                    <a href="data.html" class="showNav" id="dataManagementA">实时数据监控</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown active">
+            <a href="#" id="safetyManagement" class="dropdown-toggle" data-toggle="dropdown">
+                安全管理
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="safetyManagement">
+                <li>
+                    <a href="safePeroid.html" class="showNav" id="periodSafetyA">周期安全管理</a>
+                </li>
+                <li>
+                    <a href="safeNow.html" class="showNav" id="nowSafetyA">当期安全分析</a>
+                </li>
+                <li>
+                    <a href="point.html" class="showNav" id="pointA">监控点信息</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="temp.html">蓝莓咨询</a></li>
+        <li><a href="http://222.85.150.217:8099/BlueBerry/logout.do">后台管理</a></li>
+    </ul>
+    <h3>金属残留物基本情况图表</h3>
+    <ul class="growPeroidBasicInfo">
+        <li class="growPeroidBasicInfoHeader">批次：</li>
+        <li>
+            <select id="periodSafetyInfoBID" class="form-control input-sm">
+            </select>
+        </li>
+        <li class="growPeroidBasicInfoHeader">品种：</li>
+        <li id="productName" class="fontSize">蓝莓1号</li>
+        <li class="growPeroidBasicInfoHeader">当前周期：</li>
+        <li class="fontSize">成熟期</li>
+    </ul>
+    <div id="timeline1"></div>
+    <div class="myHr"></div>
+    <h3>成熟期果实农药残留物基本情况</h3>
+    <div style="width: 400px;margin: 20px 0 20px 5px;">
+        <div id="periodSafetyChart" style="width: 400px;height: 250px;"></div>
+        <p style="text-align: center;font-weight: bold;margin-top: 10px;" id="nyTitle">果实农药残留</p>
+    </div>
+    <div class="myHr" style="margin-top: 10px;"></div>
+    <div class="growPeriodControl" style="height: 70px;clear: right">
+        <h3 class="growPeriodH4" style="font-size: 24px">周期内质量监控分析</h3>
+        <img class="growPeriodPrint" src="image/print.png" onclick="printTable('infomation')" style="margin-top: 20px"/>
+    </div>
+    <div id="infomation">
+        <div class="growPeriodControl">
+            <h4 class="growPeriodH4">休眠期：</h4>
+            <button class="btn btn-info btn-sm nowSafe" style="margin-top: 4px;float: right" data-type="休眠期">当期信息查看</button>
+        </div>
+        <div id="periodSafety1">
+            <table class="periodSafetyTable table-hover" style="margin-left: 10px;" id="periodSafetyTable1">
+                <thead>
+                <tr>
+                    <th class="firstTr">生长周期</th>
+                    <th class="secondTr">指标</th>
+                    <th class="thirdTr">对象</th>
+                    <th class="fourthTr">数值</th>
+                    <th class="fifthTr">评价结果</th>
+                    <th class="sixthTr">填写时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="growPeriodControl">
+            <h4 class="growPeriodH4">开花期：</h4>
+            <button class="btn btn-info btn-sm nowSafe" style="margin-top: 4px;float: right" data-type="开花期">当期信息查看</button>
+        </div>
+        <div id="periodSafety2">
+            <table class="periodSafetyTable table-hover" style="margin-left: 10px;" id="periodSafetyTable2">
+                <thead>
+                <tr>
+                    <th class="firstTr">生长周期</th>
+                    <th class="secondTr">指标</th>
+                    <th class="thirdTr">对象</th>
+                    <th class="fourthTr">数值</th>
+                    <th class="fifthTr">评价结果</th>
+                    <th class="sixthTr">填写时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="growPeriodControl">
+            <h4 class="growPeriodH4">抽枝期：</h4>
+            <button class="btn btn-info btn-sm nowSafe" style="margin-top: 4px;float: right" data-type="抽枝期">当期信息查看</button>
+        </div>
+        <div id="periodSafety3">
+            <table class="periodSafetyTable table-hover" style="margin-left: 10px;"  id="periodSafetyTable3">
+                <thead>
+                <tr>
+                    <th class="firstTr">生长周期</th>
+                    <th class="secondTr">指标</th>
+                    <th class="thirdTr">对象</th>
+                    <th class="fourthTr">数值</th>
+                    <th class="fifthTr">评价结果</th>
+                    <th class="sixthTr">填写时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="growPeriodControl">
+            <h4 class="growPeriodH4">完全开花期：</h4>
+            <button class="btn btn-info btn-sm nowSafe" style="margin-top: 4px;float: right" data-type="完全开花期">当期信息查看</button>
+        </div>
+        <div id="periodSafety4">
+            <table class="periodSafetyTable table-hover" style="margin-left: 10px;"  id="periodSafetyTable4">
+                <thead>
+                <tr>
+                    <th class="firstTr">生长周期</th>
+                    <th class="secondTr">指标</th>
+                    <th class="thirdTr">对象</th>
+                    <th class="fourthTr">数值</th>
+                    <th class="fifthTr">评价结果</th>
+                    <th class="sixthTr">填写时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="growPeriodControl">
+            <h4 class="growPeriodH4">成熟期：</h4>
+            <button class="btn btn-info btn-sm nowSafe" style="margin-top: 4px;float: right" data-type="成熟期">当期信息查看</button>
+        </div>
+        <div id="periodSafety5">
+            <table class="periodSafetyTable table-hover" style="margin-left: 10px;"  id="periodSafetyTable5">
+                <thead>
+                <tr>
+                    <th class="firstTr">生长周期</th>
+                    <th class="secondTr">指标</th>
+                    <th class="thirdTr">对象</th>
+                    <th class="fourthTr">数值</th>
+                    <th class="fifthTr">评价结果</th>
+                    <th class="sixthTr">填写时间</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="height: 100px;background: url('image/bottom_banner.jpg') repeat;text-align: center;line-height: 100px;">
+        版权所有：贵州农经传媒资讯有限公司&nbsp;&nbsp;&nbsp;&nbsp;技术支持：树信智信息科技有限公司
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="css/normalize.css">
+    <link type="text/css" rel="stylesheet" href="css/kendo.dataviz.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/mobile.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/kendo.all.min.js"></script>
+    <script type="text/javascript" src="js/mobile.js"></script>
+    <title>蓝莓</title>
+    <script>
+        $(document).ready(function(){
+            var today=new Date();
+            var string=today.getFullYear()+"年"+(today.getMonth()+1)+"月"+today.getDay()+"日";
+            $("#time").html(string);
+        })
+    </script>
+</head>
+<body>
+    <div id="header">
+        <img src="images/back.png" class="specialA" data-href="index.html" style="position: relative;z-index: 1000" id="index"/>
+        <p>田间图片</p>
+    </div>
+    <div id="carousel-example-generic" class="carousel slide" data-ride="carousel" style="height: 450px;">
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+            <li data-target="#carousel-example-generic" data-slide-to="5"></li>
+        </ol>
+        <div class="carousel-inner" style="height: 450px">
+            <div class="item active"><img src="images/1.jpg" class="specialImg"></div>
+            <div class="item"><img src="images/2.jpg" class="specialImg"></div>
+            <div class="item"><img src="images/3.jpg" class="specialImg"></div>
+            <div class="item"><img src="images/4.jpg" class="specialImg"></div>
+            <div class="item"><img src="images/5.jpg" class="specialImg"></div>
+            <div class="item"><img src="images/6.jpg" class="specialImg"></div>
+        </div>
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div>
+    <div id="black"></div>
+    <div id="blackFont">田间照片<span id="time">2014年3月19日</span></div>
+    <table class="table" id="table1" style="margin-top: -100px">
+        <tr>
+            <td>农药指标：<span id="ny">0.006%</span><span class="judge"></span></td>
+            <td>重金属指标：<span id="pt">0.001%</span><span class="judge"></span></td>
+        </tr>
+        <tr>
+            <td class="borderBottom"><img src="images/button3.png" class="button"/></td>
+            <td class="borderBottom"><img src="images/button2.png" class="button specialA" data-href="safe.html" id="safe"/></td>
+        </tr>
+    </table>
+    <div class="infoBlock">
+        <h1>营养信息</h1>
+        <p class="infos">蓝莓果肉细腻，风味独特，酸甜适度，又具有香爽宜人的香气。蓝莓中诸如蛋白质、维生素等的常规营养成分含量十分丰富，矿物质和微量元素含量也相关可观，因此，蓝莓被称为“水果皇后”的确是名符其实！</p>
+    </div>
+
+</body>
+</html>

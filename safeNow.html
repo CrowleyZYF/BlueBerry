@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="css/kendo.dataviz.min.css" rel="stylesheet" />
+    <link href="css/kendo.common.min.css" rel="stylesheet" />
+    <link href="css/kendo.bootstrap.min.css" rel="stylesheet" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/tablecloth.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/jquery.metadata.js"></script>
+    <script src="js/jquery.tablesorter.js"></script>
+    <script src="js/jquery.tablecloth.js"></script>
+    <script src="js/temWetChart.js"></script>
+    <script src="js/jsonTemp.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/safeNow.js"></script>
+    <script src="js/href.js"></script>
+    <title>当期安全分析</title>
+    <script>
+        $(document).ready(function(){
+            $("#mapDivA").click(function(){
+                location.href=$(this).attr("href");
+            })
+        })
+    </script>
+</head>
+<body>
+    <div style="height: 100px;">
+        <img src="image/top_banner.jpg" style="height: 100px;width: 100%">
+    </div>
+    <ul id="myTab" class="nav nav-tabs content">
+        <li><a href="map.html" data-toggle="tab" class="hideNav" id="mapDivA">地图</a></li>
+        <li class="dropdown">
+            <a href="#" id="growManagement" class="dropdown-toggle" data-toggle="dropdown">
+                生长管理
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="growManagement">
+                <li>
+                    <a href="growPeroid.html" class="showNav" id="growPeriodA">生长周期分析</a>
+                </li>
+                <li>
+                    <a href="data.html" class="showNav" id="dataManagementA">实时数据监控</a>
+                </li>
+            </ul>
+        </li>
+        <li class="dropdown active">
+            <a href="#" id="safetyManagement" class="dropdown-toggle" data-toggle="dropdown">
+                安全管理
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="safetyManagement">
+                <li>
+                    <a href="safePeroid.html" class="showNav" id="periodSafetyA">周期安全管理</a>
+                </li>
+                <li>
+                    <a href="safeNow.html" class="showNav" id="nowSafetyA">当期安全分析</a>
+                </li>
+                <li>
+                    <a href="point.html" class="showNav" id="pointA">监控点信息</a>
+                </li>
+            </ul>
+        </li>
+        <li><a href="temp.html">蓝莓咨询</a></li>
+        <li><a href="http://222.85.150.217:8099/BlueBerry/logout.do">后台管理</a></li>
+    </ul>
+    <h3>当期安全分析</h3>
+    <ul class="growPeroidBasicInfo" style="padding-left: 0;width: 1200px;margin-left: 0;">
+        <li class="growPeroidBasicInfoHeader">批次：</li>
+        <li>
+            <select id="periodSafetyInfoBID" class="form-control input-sm">
+            </select>
+        </li>
+        <li class="growPeroidBasicInfoHeader">生长周期：</li>
+        <li>
+            <select class="form-control input-sm" id="period2">
+                <option data-pt="0" data-pg="0" data-ny="0" data-id="" id="period2Sleep">休眠期</option>
+                <option data-pt="0" data-pg="0" data-ny="0" data-id="" id="period2Flower">开花期</option>
+                <option data-pt="0" data-pg="0" data-ny="0" data-id="" id="period2Trunk">抽枝期</option>
+                <option data-pt="0" data-pg="0" data-ny="0" data-id="" id="period2Bloom">完全开花期</option>
+                <option data-pt="0" data-pg="0" data-ny="0" data-id="" id="period2Fruit">成熟期</option>
+            </select>
+        </li>
+        <li class="growPeroidBasicInfoHeader">对象：</li>
+        <li>
+            <select class="form-control input-sm" id="object">
+                <option>土壤</option>
+                <option>叶片</option>
+                <option>果实</option>
+            </select>
+        </li>
+        <li class="growPeroidBasicInfoHeader">对应时间：</li>
+        <li style="width: 200px;">
+            <p class="fontSize" style="padding-top: 3px;width: 300px"><span id="nowSafetyBeginTime" style="width: 100px;float: none;">2014/11/1</span> 至 <span id="nowSafetyEndTime" style="width: 100px;float: none;">2014/12/1</span></p>
+        </li>
+    </ul>
+    <div id="nowSafetyGauge-container">
+        <div class="nowSafetyGauge">
+            <div id="nowSafetyGauge1"></div>
+            <p>重金属</p>
+        </div>
+        <div class="nowSafetyGauge">
+            <div id="nowSafetyGauge2"></div>
+            <p>农药残留</p>
+        </div>
+    </div>
+    <div class="myHr"></div>
+    <div class="print">
+        <h3>详细信息</h3>
+        <div class="btn-group" style="float: left;margin-left: 10px;">
+            <button type="button" class="btn btn-default btn-sm btn-info dropdown-toggle" data-toggle="dropdown">
+                查看对应监控点 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" id="pointMenu">
+            </ul>
+        </div>
+        <div>
+            <img src="image/print.png" />
+            <a href="javascript:printTable('table1')">打印表格</a>
+        </div>
+    </div>
+    <div style="margin-left: 10px;width: 1200px;" id="table1">
+        <table class="nowSafetyTable1 table-hover" id="nowSafetyDetailTable">
+            <thead>
+            <tr>
+                <th>生长周期</th>
+                <th>指标</th>
+                <th>检测对象</th>
+                <th>数值</th>
+                <th>评价结果</th>
+                <th>填写人</th>
+                <th>填写时间</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <div class="print">
+        <h3>指标信息</h3>
+        <div>
+            <img src="image/print.png" />
+            <a href="javascript:printTable('table2')">打印表格</a>
+        </div>
+    </div>
+    <div class="otherInfoDiv" style="margin-top: 20px;height: 580px" id="table2">
+        <div class="otherInfo" style="width: 580px;height: 580px">
+            <h5>指标计算说明：农药</h5>
+            <div style="margin-left: 10px;margin-right: 10px;">
+                <table class="nowSafetyTable2 table-hover">
+                    <thead>
+                    <tr>
+                        <th>农药名称</th>
+                        <th>农药浓度</th>
+                        <th>参考标准</th>
+                        <th>达标情况</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="otherInfo" style="margin-right: 0;height: 580px">
+            <h5>其他说明：</h5>
+            <div>
+                <img src="image/test1.png" class="otherImg" style=""/>
+            </div>
+        </div>
+    </div>
+    <div style="height: 100px;background: url('image/bottom_banner.jpg') repeat;text-align: center;line-height: 100px;">
+        版权所有：贵州农经传媒资讯有限公司&nbsp;&nbsp;&nbsp;&nbsp;技术支持：树信智信息科技有限公司
+    </div>
+</body>
+</html>
