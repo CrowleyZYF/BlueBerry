@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="css/normalize.css">
+    <link type="text/css" rel="stylesheet" href="css/kendo.dataviz.min.css">
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="css/mobile.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/kendo.all.min.js"></script>
+    <script type="text/javascript" src="js/mobile.js"></script>
+    <title>蓝莓</title>
+</head>
+<body>
+<div id="header">
+    <img src="images/back.png" class="specialA" data-href="index.html" style="position: relative;z-index: 1000" id="index" />
+    <p>地图</p>
+</div>
+<header>
+    <img src="images/logo.png" />
+    <ul>
+        <li style="font-size: 70px">亲！蓝莓长在这~</li>
+        <li><a id="map" class="btn btn-lg btn-info" href="trip.html">还可以去旅游哦~</a></li>
+    </ul>
+</header>
+<div id="mapDiv" style="width: 100%;height: 800px"></div>
+<script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+<script>
+    $(document).ready(function(){
+        var sContent = "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>基地名称</h4><h5 style='margin:0 0 5px 0;padding:0.2em 0'>经度：东经<span id='jd'>107.9</span>°</h5><h5 style='margin:0 0 5px 0;padding:0.2em 0'>纬度：北纬<span id='wd'>26.5</span>°</h5><h5 style='margin:0 0 5px 0;padding:0.2em 0'>基地介绍：<span id='baseRemark'>暂无</span></h5>";
+        var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+        var map = new BMap.Map("mapDiv");          // 创建地图实例
+        map.centerAndZoom(new BMap.Point(107.9,26.5), 12);
+        var marker1 = new BMap.Marker(new BMap.Point(107.9,26.5));  // 创建标注
+        map.addOverlay(marker1);              // 将标注添加到地图中
+        marker1.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+        marker1.addEventListener("click", function(){
+            this.openInfoWindow(infoWindow);
+        });
+        var opts1 = {type: BMAP_NAVIGATION_CONTROL_LARGE};
+        map.addControl(new BMap.NavigationControl(opts1));
+        map.addControl(new BMap.MapTypeControl());
+    })
+</script>
+</body>
+</html>

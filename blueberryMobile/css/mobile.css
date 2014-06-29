@@ -5,7 +5,7 @@ body{
 }
 header{
     width: 100%;
-    height: 165px;
+    height: 240px;
     padding: 37px 23px;
     background-color: #6f7e9d;
     border-bottom: 1px solid #ddd;
@@ -14,14 +14,13 @@ header>*{
     float: left;
 }
 header>img{
-    width: 90px;
-    height: 90px;
+    width: 160px;
+    height: 160px;
 }
 header>ul{
-    margin-top: 15px;
     margin-left: 20px;
     padding-left: 0;
-    font-size: 22px;
+    font-size: 32px;
     list-style: none;
     color: #ffffff;
 }
@@ -41,6 +40,8 @@ header>ul{
 }
 #table1 tr td{
     line-height: 45px;
+    font-size: 32px;
+    padding: 15px;
 }
 .borderBottom{
     border-bottom: 1px solid #ddd;
@@ -48,6 +49,13 @@ header>ul{
 .judge{
     border-radius: 10px;
     background-color: #fd9b01;
+    color: #ffffff;
+    padding: 3px;
+    margin-left: 15px;
+}
+.judgeBad{
+    border-radius: 10px;
+    background-color: #fd1818;
     color: #ffffff;
     padding: 3px;
     margin-left: 15px;
@@ -69,15 +77,18 @@ header>ul{
 }
 .specialLi{
     margin-left: 150px;
-    height: 110px !important;
+    height: 130px !important;
     font-size: 28px;
     color: #999999 !important;
 }
-.smallFont{
-    font-size: 20px;
+.specialLi span{
+    font-size: 35px;
 }
 .activeP{
     color: #25ad5f;
+}
+.smallFont{
+    font-size: 25px !important;
 }
 .circleActive{
     width: 30px;
@@ -97,7 +108,7 @@ header>ul{
     background-color: #dcdcdc;
     position: absolute;
     left: 75px;
-    margin-top: 40px;
+    margin-top: 30px;
 }
 #specialLi{
     width: 2px;
@@ -156,7 +167,7 @@ header>ul{
     padding-bottom: 20px;
 }
 h1{
-    font-size: 30px;
+    font-size: 32px;
     border-bottom: 1px solid #ddd;
     width: 98%;
     margin: 30px 1%;
@@ -165,7 +176,7 @@ h1{
 .infos{
     width: 98%;
     margin: 0 1%;
-    font-size: 24px;
+    font-size: 30px;
     padding-bottom: 150px;
 }
 .orange{
@@ -174,6 +185,12 @@ h1{
 .specialA:hover{
     cursor: pointer;
 }
+#map{
+    color: #ffffff;
+    font-size: 28px;
+    margin-top: 10px;
+}
+/*
 .judge{
     background: url("../images/smile.png");
     background-size: cover;
@@ -194,3 +211,4 @@ h1{
     top: 5px;
     margin-left: 15px;
 }
+*/

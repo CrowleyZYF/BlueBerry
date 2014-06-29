@@ -10,6 +10,32 @@ var i08=[
     {"ZY_TYPE":"01","TYPENAME":"施肥5","PC_ZJ":"ZZPC-140104-0000","ZJ":"ZZPC-140104-00000","CONTENT":"1237","REMARK":"撒旦飞5","ADDTIME":"2014-05-11"}
 ];
 function createPesticideSafetyGauge(value) {
+    $("#chart2").kendoLinearGauge({
+        pointer: {
+            value: value,
+            shape: "arrow",
+            size:15
+        },
+        scale: {
+            majorUnit: 10,
+            minorUnit: 1,
+            min: 0,
+            max: 100,
+            vertical: false,
+            ranges: [
+                {
+                    from: 0,
+                    to: 50,
+                    color: "#BFC4E3"
+                }, {
+                    from: 50,
+                    to: 100,
+                    color: "#F2CDD0"
+                }
+            ]
+        }
+    });
+    /*
     $("#chart2").kendoRadialGauge({
         title: {
             text: "金属残留物基本情况图表"
@@ -38,6 +64,7 @@ function createPesticideSafetyGauge(value) {
             ]
         }
     });
+    */
 }
 function createBaseInfo2(data1,data2){
     $("#chart").kendoChart({
@@ -75,9 +102,9 @@ function createBaseInfo2(data1,data2){
                 opacity: 0.3
             }, {
                 from: 2,
-                to: 2.1,
+                to: 4,
                 color: "#f47983",
-                opacity: 0.9
+                opacity: 0.3
             }]
         }],
         categoryAxis: {
@@ -124,7 +151,8 @@ function initI08(json){
     }
     var li=$("<li id='specialLi'></li>");
     $("#trace").append(li);
-    $("#specialLi").css("height",json.length*110-110);
+    $("#specialLi").css("height",json.length*130-130);
+    $("#specialLi").css("margin-top","80px");
 }
 function initI04(json){
     var temp=[0,0,0,0,0];
@@ -140,6 +168,7 @@ function initI04(json){
                 $("#pt").html(parseFloat(json[i]["pt"]));
                 if(parseFloat($("#pt").html())>=2){
                     $("#pt").next().removeClass("judge").addClass("judgeBad");
+                    $("#pt").next().html("差");
                 }
             }else{
                 $("#pt").html("暂无数据");
@@ -148,6 +177,7 @@ function initI04(json){
                 $("#ny").html(json[i]["ny"]==1?"不达标":"达标");
                 if($("#ny").html()=="不达标"){
                     $("#ny").next().removeClass("judge").addClass("judgeBad");
+                    $("#ny").next().html("差");
                 }
             }else{
                 $("#ny").html("暂无数据");
