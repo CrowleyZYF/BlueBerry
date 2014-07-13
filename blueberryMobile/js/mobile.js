@@ -10,11 +10,12 @@ var i08=[
     {"ZY_TYPE":"01","TYPENAME":"施肥5","PC_ZJ":"ZZPC-140104-0000","ZJ":"ZZPC-140104-00000","CONTENT":"1237","REMARK":"撒旦飞5","ADDTIME":"2014-05-11"}
 ];
 function createPesticideSafetyGauge(value) {
+    //alert(2);
     $("#chart2").kendoLinearGauge({
         pointer: {
             value: value,
             shape: "arrow",
-            size:15
+            size:30
         },
         scale: {
             majorUnit: 10,
@@ -32,7 +33,11 @@ function createPesticideSafetyGauge(value) {
                     to: 100,
                     color: "#F2CDD0"
                 }
-            ]
+            ],
+            labels: {
+                visible: true,
+                font: "30px sans-serif"
+            }
         }
     });
     /*
@@ -67,22 +72,32 @@ function createPesticideSafetyGauge(value) {
     */
 }
 function createBaseInfo2(data1,data2){
+    //alert(1);
     $("#chart").kendoChart({
         title: {
-            text: "金属残留物基本情况图表"
+            text: "金属残留物基本情况图表",
+            font: "35px sans-serif"
         },
         chartArea: {
             background: null
         },
         legend: {
-            position: "bottom"
+            position: "bottom",
+            labels: {
+                visible: true,
+                font: "20px sans-serif"
+            }
         },
         series: [{
             type: "column",
             data: data1,
             name: "土壤金属残留物",
             color: "#ff8c31",
-            axis: "js"
+            axis: "js",
+            labels: {
+                visible: true,
+                font: "20px sans-serif"
+            }
         },{
             type: "column",
             data: data2,
@@ -92,7 +107,8 @@ function createBaseInfo2(data1,data2){
         }],
         valueAxes: [{
             name: "js",
-            title: { text: "金属残留物" },
+            title: { text: "金属残留物" ,
+                font: "25px sans-serif"},
             min:0,
             max:4,
             plotBands: [{
@@ -105,14 +121,20 @@ function createBaseInfo2(data1,data2){
                 to: 4,
                 color: "#f47983",
                 opacity: 0.3
-            }]
+            }],
+            labels: {
+                font: "20px sans-serif"
+            }
         }],
         categoryAxis: {
             categories: ["休眠期","花芽开放期","抽枝期","完全开放期","成熟期"],
             majorGridLines: {
                 visible: false
             },
-            baseUnitStep: "auto"
+            baseUnitStep: "auto",
+            labels: {
+                font: "25px sans-serif"
+            }
         },
         tooltip: {
             visible: true,

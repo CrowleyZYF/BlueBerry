@@ -28,6 +28,8 @@
 <script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
 <script>
     $(document).ready(function(){
+        var height=parseInt(window.screen.height)-330;alert(height);
+        $("#mapDiv").css("height",height);
         var sContent = "<h4 style='margin:0 0 5px 0;padding:0.2em 0'>基地名称</h4><h5 style='margin:0 0 5px 0;padding:0.2em 0'>经度：东经<span id='jd'>107.9</span>°</h5><h5 style='margin:0 0 5px 0;padding:0.2em 0'>纬度：北纬<span id='wd'>26.5</span>°</h5><h5 style='margin:0 0 5px 0;padding:0.2em 0'>基地介绍：<span id='baseRemark'>暂无</span></h5>";
         var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
         var map = new BMap.Map("mapDiv");          // 创建地图实例

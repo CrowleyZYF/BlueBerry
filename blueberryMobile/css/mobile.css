@@ -190,6 +190,14 @@ h1{
     font-size: 28px;
     margin-top: 10px;
 }
+.glyphicon-chevron-right{
+    font-size: 75px;
+    top:35% !important;
+}
+.glyphicon-chevron-left{
+    font-size: 75px;
+    top:35% !important;
+}
 /*
 .judge{
     background: url("../images/smile.png");
