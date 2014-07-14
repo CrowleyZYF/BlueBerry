@@ -469,7 +469,18 @@ $(document).ready(function() {
     }
     var urlArguments=url.slice(url.lastIndexOf("?")+1,url.length);
     var urlAddress="../data.action?tit=I01&"+urlArguments;
+    var urlAddress2="../data.action?tit=IMG";
+    $.ajax({
+        type:"GET",
+        url:urlAddress2,
+        dataType:"json",
+        success:function(json){
+            $("#checkImg").attr("href",json);
+        },
+        error:function(){
 
+        }
+    });
     $.ajax({
         type:"GET",
         url:urlAddress,
