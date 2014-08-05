@@ -52,10 +52,10 @@ function initI07(json){
     $("#blueBerryImg2").attr("src","http://222.85.150.217:8099/BlueBerry/uploadfile"+img[0]);
     switch ($("#growPeriodIndex option:selected").attr("id")){
         case "1":
-            createBaseInfo1("生长周期分析基本情况图表(温度)",min,"最低温度均值",avg,"平均温度均值",max,"最高温度均值","温度（℃）",-10,-5,5,13,23,30,35,timeArray,img);
+            createBaseInfo1("生长周期分析基本情况图表(温度)",min,"最低温度均值",avg,"平均温度均值",max,"最高温度均值","温度（℃）",-10,-5,5,13,23,30,35,timeArray,img,-10,40);
             break;
         case "2":
-            createBaseInfo1("生长周期分析基本情况图表(湿度)",min,"最低湿度均值",avg,"平均湿度均值",max,"最高湿度均值","湿度（%）",0,5,15,33,53,60,75,timeArray,img);
+            createBaseInfo1("生长周期分析基本情况图表(湿度)",min,"最低湿度均值",avg,"平均湿度均值",max,"最高湿度均值","湿度（%）",0,5,15,33,53,60,75,timeArray,img,0,100);
             break;
     }
 }
@@ -287,7 +287,7 @@ function pieChartChange(){
             break;
     }
 }
-function createBaseInfo1(title,data1,data1Title1,data2,dataTitle2,data3,dataTitle3,valueTitle,axisCrossingValue,minMin,minMax,middleMin,middleMax,maxMin,maxMax,categories,img){
+function createBaseInfo1(title,data1,data1Title1,data2,dataTitle2,data3,dataTitle3,valueTitle,axisCrossingValue,minMin,minMax,middleMin,middleMax,maxMin,maxMax,categories,img,bottomValue,topValue){
     $("#timeline").kendoChart({
         title: {
             text: title
@@ -340,8 +340,8 @@ function createBaseInfo1(title,data1,data1Title1,data2,dataTitle2,data3,dataTitl
                 color: "#f47983",
                 opacity: 0.3
             }],
-            min:-10,
-            max:40
+            min:bottomValue,
+            max:topValue
         },
         categoryAxis: {
             categories: categories,
@@ -470,16 +470,9 @@ $(document).ready(function() {
     var urlArguments=url.slice(url.lastIndexOf("?")+1,url.length);
     var urlAddress="../data.action?tit=I01&"+urlArguments;
     var urlAddress2="../data.action?tit=IMG";
-    $.ajax({
-        type:"GET",
-        url:urlAddress2,
-        dataType:"json",
-        success:function(json){
-            $("#checkImg").attr("href",json);
-        },
-        error:function(){
-
-        }
+    $.post(urlAddress2).then(function(resp){
+        console.log(resp);
+        $("#checkImg").attr("href",resp);
     });
     $.ajax({
         type:"GET",
